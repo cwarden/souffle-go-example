@@ -1,9 +1,9 @@
 SHELL=/bin/bash
 
-run: SwigInterface/example.cpp
+run: SwigInterface/example.cpp edge.db
 	go run -x .
 
-souffle-go-example: SwigInterface/example.cpp
+souffle-go-example: SwigInterface/example.cpp edge.db
 	go build -x .
 
 SwigInterface/%.cpp: %.dl cmd-exists-souffle
