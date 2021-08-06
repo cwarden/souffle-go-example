@@ -1,9 +1,14 @@
 SHELL=/bin/bash
 
-run: SwigInterface/example.cpp edge.db
+APP := SwigInterface/example.cpp example.go
+DATA := edge.db
+
+run: $(APP) $(DATA)
 	go run -x .
 
-souffle-go-example: SwigInterface/example.cpp edge.db
+build: souffle-go-example
+
+souffle-go-example: $(APP) $(DATA)
 	go build -x .
 
 SwigInterface/%.cpp: %.dl cmd-exists-souffle
@@ -22,6 +27,6 @@ clean:
 
 .DELETE_ON_ERROR:
 
-.PHONY: clean run
+.PHONY: clean run build
 
 .SECONDARY:
