@@ -1,5 +1,6 @@
 SHELL=/bin/bash
 
+INTERFACE := SwigInterface/SwigInterface.h SwigInterface/SwigInterface.swigcxx
 APP := SwigInterface/example.cpp example.go
 DATA := edge.db
 
@@ -11,7 +12,7 @@ build: souffle-go-example
 souffle-go-example: $(APP) $(DATA)
 	go build -x .
 
-SwigInterface/%.cpp: %.dl cmd-exists-souffle
+SwigInterface/%.cpp: %.dl $(INTERFACE) cmd-exists-souffle
 	souffle  -g $@ $<
 
 %.db: %.csv cmd-exists-sqlite3
