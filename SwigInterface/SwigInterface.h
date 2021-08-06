@@ -87,5 +87,8 @@ public:
  */
 SWIGSouffleProgram* newInstance(const std::string& name) {
     auto* prog = souffle::ProgramFactory::newInstance(name);
+    if (!prog) {
+        return NULL;
+    }
     return new SWIGSouffleProgram(prog);
 }
