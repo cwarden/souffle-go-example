@@ -1,0 +1,10 @@
+.decl edge(x:number, y:number)
+// .input edge
+.input edge(IO=file, rfc4180=true, delimiter=",", headers=true, filename="edge.csv")
+// .input edge(IO=sqlite, filename="edge.db")
+
+.decl path(x:number, y:number)
+.output path
+
+path(x, y) :- edge(x, y).
+path(x, y) :- path(x, z), edge(z, y).

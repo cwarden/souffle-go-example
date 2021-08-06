@@ -1,0 +1,4 @@
+SwigInterface/*.cpp
+*.db
+path.csv
+souffle-go-example
