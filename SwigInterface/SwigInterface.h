@@ -21,11 +21,11 @@
 #include <iostream>
 #include <string>
 
-class SWIGTuple {
+class SWIGSouffleTuple {
     souffle::tuple* t;
     souffle::Relation* relation;
 public:
-    SWIGTuple(souffle::tuple* t, souffle::Relation* r) : t(t), relation(r) {}
+    SWIGSouffleTuple(souffle::tuple* t, souffle::Relation* r) : t(t), relation(r) {}
 
     std::string getString(unsigned int i) {
         (*t).rewind();
@@ -140,12 +140,12 @@ public:
         end = relation->end();
     }
 
-    SWIGTuple* newTuple() {
-        return new SWIGTuple(new souffle::tuple(relation), relation);
+    SWIGSouffleTuple* newTuple() {
+        return new SWIGSouffleTuple(new souffle::tuple(relation), relation);
     }
 
-    SWIGTuple* next() {
-        SWIGTuple* t = new SWIGTuple(&(*iter), relation);
+    SWIGSouffleTuple* next() {
+        SWIGSouffleTuple* t = new SWIGSouffleTuple(&(*iter), relation);
         if (iter != end) {
             iter++;
         }
