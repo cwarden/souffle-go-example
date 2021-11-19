@@ -6,5 +6,9 @@
 .decl path(x:number, y:number)
 .output path(IO=stdout)
 
+edge(x+1, y+2) :- edge(x, y).
+
 path(x, y) :- edge(x, y).
 path(x, y) :- path(x, z), edge(z, y).
+
+.limitsize edge(n=300000)

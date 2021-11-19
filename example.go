@@ -66,7 +66,7 @@ func main() {
 			}
 			SwigInterface.DeleteSWIGSouffleTuple(tuple)
 
-			fmt.Printf("<%s>\n", strings.Join(elements, ","))
+			_ = fmt.Sprintf("<%s>\n", strings.Join(elements, ","))
 		}
 		SwigInterface.DeleteSWIGSouffleRelation(paths)
 		runtime.ReadMemStats(&mem)
