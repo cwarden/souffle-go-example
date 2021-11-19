@@ -1,14 +1,10 @@
 .decl edge(x:number, y:number)
-// .input edge
-// .input edge(IO=file, rfc4180=true, delimiter=",", headers=true, filename="edge.csv")
 .input edge(IO=sqlite, filename="edge.db")
 
 .decl path(x:number, y:number)
-.output path(IO=stdout)
+.printsize path
 
-edge(x+1, y+2) :- edge(x, y).
+edge(x+1, y+2) :- edge(x, y), x <= 300000.
 
 path(x, y) :- edge(x, y).
 path(x, y) :- path(x, z), edge(z, y).
-
-.limitsize edge(n=300000)

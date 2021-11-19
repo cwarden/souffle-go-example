@@ -13,7 +13,7 @@ souffle-go-example: $(APP) $(DATA)
 	go build -x .
 
 SwigInterface/%.cpp: %.dl $(INTERFACE) cmd-exists-souffle
-	souffle  -g $@ $<
+	souffle --jobs auto -g $@ $<
 
 %.db: %.csv cmd-exists-sqlite3
 	-rm -f $@
@@ -24,7 +24,7 @@ cmd-exists-%:
 		(echo "ERROR: '$(*)' must be installed and available on your PATH."; exit 1)
 
 clean:
-	-rm -f *.db souffle-go-example path.csv
+	-rm -f *.db souffle-go-example path.csv SwigInterface/*.cpp
 
 .DELETE_ON_ERROR:
 
